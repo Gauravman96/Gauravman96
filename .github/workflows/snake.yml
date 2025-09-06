@@ -1,17 +1,18 @@
-name: Generate Snake
+name: generate-snake
 
 on:
   schedule:
-    - cron: "0 0 * * *" # Runs at 12AM UTC daily
-  workflow_dispatch:
+    - cron: "0 0 * * *"   # Daily at midnight
+  workflow_dispatch:      # Manual trigger bhi
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: Platane/snk@v3
+      - name: Generate Snake
+        uses: Platane/snk@v3
         with:
-          github_user_name: Gauravman96   # <- yaha apna GitHub username likho
+          github_user_name: Gauravman96
           outputs: dist/snake.svg
 
       - name: Push Snake
